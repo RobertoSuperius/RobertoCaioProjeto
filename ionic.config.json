@@ -1,0 +1,7 @@
+{
+  "name": "RobertoCaio.PG",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
