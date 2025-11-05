@@ -4,8 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
+<ion-content class="ion-padding">
+  <!-- Lista de contatos -->
+  <ion-list *ngIf="contatos.length > 0; else semContatos">
     <ion-item *ngFor="let contato of contatos">
       <ion-label>
         <h2>{{ contato.name }}</h2>
@@ -13,4 +14,11 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <!-- Template exibido se a lista estiver vazia -->
+  <ng-template #semContatos>
+    <ion-text color="medium">
+      <p>Nenhum contato encontrado.</p>
+    </ion-text>
+  </ng-template>
 </ion-content>
