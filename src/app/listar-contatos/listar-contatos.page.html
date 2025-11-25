@@ -1,24 +1,29 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Lista de Contatos</ion-title>
+    <ion-title>Contatos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <!-- Lista de contatos -->
-  <ion-list *ngIf="contatos.length > 0; else semContatos">
-    <ion-item *ngFor="let contato of contatos">
-      <ion-label>
-        <h2>{{ contato.name }}</h2>
-        <p>{{ contato.email }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
 
-  <!-- Template exibido se a lista estiver vazia -->
+  <ng-container *ngIf="contatos.length > 0; else semContatos">
+
+    <ion-list>
+      <ion-item *ngFor="let c of contatos">
+        <ion-label>
+          <h2>{{ c.nome }}</h2>
+          <p>{{ c.email }}</p>
+          <p>{{ c.telefone }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </ng-container>
+
   <ng-template #semContatos>
     <ion-text color="medium">
-      <p>Nenhum contato encontrado.</p>
+      Nenhum contato cadastrado.
     </ion-text>
   </ng-template>
+
 </ion-content>

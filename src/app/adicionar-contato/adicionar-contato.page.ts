@@ -1,20 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { Router } from '@angular/router';
+import { ContatoService } from '../services/contato.service';
 
 @Component({
   selector: 'app-adicionar-contato',
-  templateUrl: './adicionar-contato.page.html',
-  styleUrls: ['./adicionar-contato.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule],
+  templateUrl: './adicionar-contato.page.html',
 })
-export class AdicionarContatoPage implements OnInit {
+export class AdicionarContatoPage {
 
-  constructor() { }
+  nome = '';
+  email = '';
+  telefone = '';
 
-  ngOnInit() {
+  constructor(
+    private contatoService: ContatoService,
+    private router: Router
+  ) {}
+
+  salvar() {
+    this.contatoService.adicionar({
+      nome: this.nome,
+      email: this.email,
+      telefone: this.telefone
+    });
+
+    this.router.navigate(['/menu/listar-contatos']);
   }
-
 }

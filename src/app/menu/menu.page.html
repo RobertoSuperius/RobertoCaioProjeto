@@ -1,0 +1,28 @@
+<ion-menu contentId="main-content" side="start">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item routerLink="/home">
+        <ion-label>Home</ion-label>
+      </ion-item>
+
+      <ion-item routerLink="/adicionar-contato">
+        <ion-label>Adicionar Contato</ion-label>
+      </ion-item>
+
+      <ion-item routerLink="/lista-contatos">
+        <ion-label>Lista de Contatos</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div id="main-content">
+  <ion-router-outlet></ion-router-outlet>
+</div>

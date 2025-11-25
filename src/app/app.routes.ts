@@ -2,20 +2,30 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-  },
-  {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    redirectTo: 'inicio',
+    pathMatch: 'full'
   },
   {
-    path: 'listar-contatos',
-    loadComponent: () => import('./listar-contatos/listar-contatos.page').then( m => m.ListarContatosPage)
+    path: 'inicio',
+    loadComponent: () =>
+      import('./inicio/inicio.page').then(m => m.InicioPage)
   },
   {
-    path: 'adicionar-contato',
-    loadComponent: () => import('./adicionar-contato/adicionar-contato.page').then( m => m.AdicionarContatoPage)
-  },
+    path: 'menu',
+    loadComponent: () =>
+      import('./menu/menu.page').then(m => m.MenuPage),
+    children: [
+      {
+        path: 'listar-contatos',
+        loadComponent: () =>
+          import('./listar-contatos/listar-contatos.page').then(m => m.ListarContatosPage)
+      },
+      {
+        path: 'adicionar-contato',
+        loadComponent: () =>
+          import('./adicionar-contato/adicionar-contato.page').then(m => m.AdicionarContatoPage)
+      }
+    ]
+  }
 ];
